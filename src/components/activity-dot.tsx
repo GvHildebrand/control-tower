@@ -41,7 +41,7 @@ export function ActivityDot({ lastCommitDate, lastCommitMessage, lastCommitHash 
       {lastCommitMessage && (
         <span
           className="text-[11px] truncate min-w-0"
-          style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
+          style={{ color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)' }}
         >
           {lastCommitMessage.slice(0, 52)}{lastCommitMessage.length > 52 ? '…' : ''}
         </span>
@@ -49,7 +49,7 @@ export function ActivityDot({ lastCommitDate, lastCommitMessage, lastCommitHash 
       {lastCommitHash && (
         <span
           className="text-[10px] shrink-0 hidden sm:block"
-          style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
+          style={{ color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)' }}
         >
           {lastCommitHash}
         </span>

@@ -18,92 +18,92 @@
 }
 
 /* ─────────────────────────────────────────────────────────
-   APPLE HUMAN INTERFACE GUIDELINES — ADAPTIVE COLOR SYSTEM
+   DESIGN TOKENS — SOPHISTICATED DUAL-MODE PALETTE
+
+   Philosophy:
+   • Zinc grey scale as the backbone — no opacity tricks, absolute values
+   • Status colors are muted / de-saturated (not neon indicators)
+   • NEXT ACTION = warm amber-gold, not orange
+   • Tech tags are neutral — no rainbow
+   • Minimum readable contrast: 4.5:1 (WCAG AA)
    ───────────────────────────────────────────────────────── */
 
-/* ── Light mode (default) ──────────────────────────────── */
+/* ── Light mode ────────────────────────────────────────── */
 :root {
   color-scheme: light;
 
-  /* Apple SF Pro system font stack — renders natively on macOS/iOS */
   --font-body:    -apple-system, BlinkMacSystemFont, 'SF Pro Text',    'Helvetica Neue', Arial, sans-serif;
   --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
   --font-mono:    'SF Mono', 'Menlo', 'Monaco', ui-monospace, 'Courier New', monospace;
 
-  /* Grouped backgrounds — iOS systemGroupedBackground hierarchy */
-  --bg:        #F2F2F7;   /* systemGroupedBackground */
-  --surface-1: #FFFFFF;   /* secondarySystemGroupedBackground — card */
-  --surface-2: #F2F2F7;   /* same as bg — inner sections */
-  --surface-3: #E5E5EA;   /* tertiarySystemFill — hover */
+  /* Backgrounds */
+  --bg:        #F5F5F7;   /* warm off-white — softer than iOS F2F2F7 */
+  --surface-1: #FFFFFF;
+  --surface-2: #F5F5F7;   /* same as bg — card inner sections */
+  --surface-3: #EBEBED;   /* hover / input */
 
-  /* Separators */
-  --border:       rgba(60, 60, 67, 0.12);
-  --border-hover: rgba(60, 60, 67, 0.22);
-  --separator:    rgba(60, 60, 67, 0.29);
+  /* Borders */
+  --border:       #E4E4E7;   /* zinc-200 — visible but quiet */
+  --border-hover: #D4D4D8;   /* zinc-300 */
+  --separator:    #E4E4E7;
 
-  /* Text — Apple label hierarchy */
-  --text-primary:   #000000;                   /* label */
-  --text-secondary: rgba(60, 60, 67, 0.78);    /* secondaryLabel */
-  --text-tertiary:  rgba(60, 60, 67, 0.50);    /* tertiaryLabel */
-  --text-muted:     rgba(60, 60, 67, 0.26);    /* quaternaryLabel */
+  /* Text — Zinc scale, absolute values (never opacity) */
+  --text-primary:   #18181B;   /* zinc-900 — ink, not pure black */
+  --text-secondary: #52525B;   /* zinc-600 — clear, comfortable */
+  --text-tertiary:  #71717A;   /* zinc-500 — metadata */
+  --text-muted:     #A1A1AA;   /* zinc-400 — timestamps, hashes */
 
-  /* System colors — iOS light */
-  --blue:    #007AFF;
-  --green:   #34C759;
-  --red:     #FF3B30;
-  --orange:  #FF9500;
-  --yellow:  #FFCC00;
-  --purple:  #AF52DE;
-  --cyan:    #32ADE6;
-  --pink:    #FF2D55;
-  --teal:    #30B0C7;
-  --indigo:  #5856D6;
+  /* Status — dark enough for 4.5:1 contrast on white */
+  --status-new:      #7C3AED;   /* violet-700 */
+  --status-critical: #DC2626;   /* red-600 */
+  --status-blocked:  #D97706;   /* amber-600 */
+  --status-active:   #059669;   /* emerald-600 */
+  --status-paused:   #71717A;   /* zinc-500 */
+  --status-complete: #2563EB;   /* blue-600 */
+  --status-dead:     #D4D4D8;   /* zinc-300 */
 
-  /* Status accents */
-  --status-new:      #AF52DE;
-  --status-critical: #FF3B30;
-  --status-blocked:  #FF9500;
-  --status-active:   #34C759;
-  --status-paused:   #8E8E93;
-  --status-complete: #007AFF;
-  --status-dead:     #C7C7CC;
+  /* NEXT ACTION — amber-gold, sophisticated */
+  --next-action:       #92400E;   /* amber-800 — 8.5:1 on white */
+  --next-action-bg:    #FFFBEB;   /* amber-50 — warm cream */
+  --next-action-label: #B45309;   /* amber-700 at 60% */
 
-  /* NEXT ACTION — most important field */
-  --next-action:        #C65200;               /* darkened orange — 4.5:1 on white */
-  --next-action-bg:     rgba(255, 149, 0, 0.08);
-  --next-action-label:  rgba(198, 82, 0, 0.48);
+  /* Color aliases (used in activity dots, etc.) */
+  --red:    var(--status-critical);
+  --green:  var(--status-active);
+  --orange: var(--status-blocked);
+  --blue:   var(--status-complete);
+  --purple: var(--status-new);
 
   /* Card elevation */
-  --card-shadow:       0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
-  --card-shadow-hover: 0 6px 20px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.06);
+  --card-shadow:       0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.08);
+  --card-shadow-hover: 0 4px 16px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
 
-  /* Chrome surfaces */
-  --sidebar-bg: rgba(242, 242, 247, 0.92);
-  --header-bg:  rgba(242, 242, 247, 0.85);
+  /* Chrome */
+  --sidebar-bg: rgba(245, 245, 247, 0.94);
+  --header-bg:  rgba(245, 245, 247, 0.88);
 
-  /* Sidebar */
   --sidebar-width: 72px;
 
   /* Shadcn compat */
-  --background:         #F2F2F7;
-  --foreground:         #000000;
+  --background:         #F5F5F7;
+  --foreground:         #18181B;
   --card:               #FFFFFF;
-  --card-foreground:    #000000;
+  --card-foreground:    #18181B;
   --popover:            #FFFFFF;
-  --popover-foreground: #000000;
-  --primary:            #007AFF;
+  --popover-foreground: #18181B;
+  --primary:            #2563EB;
   --primary-foreground: #FFFFFF;
-  --secondary:          #E5E5EA;
-  --secondary-foreground: rgba(60,60,67,0.78);
-  --muted:              #F2F2F7;
-  --muted-foreground:   rgba(60,60,67,0.50);
-  --accent:             #E5E5EA;
-  --accent-foreground:  #007AFF;
-  --destructive:        #FF3B30;
-  --border:             rgba(60, 60, 67, 0.12);
-  --input:              #E5E5EA;
-  --ring:               rgba(0, 122, 255, 0.40);
-  --radius:             0.875rem;
+  --secondary:          #F5F5F7;
+  --secondary-foreground: #52525B;
+  --muted:              #F5F5F7;
+  --muted-foreground:   #71717A;
+  --accent:             #EBEBED;
+  --accent-foreground:  #2563EB;
+  --destructive:        #DC2626;
+  --border:             #E4E4E7;
+  --input:              #EBEBED;
+  --ring:               rgba(37, 99, 235, 0.35);
+  --radius:             0.75rem;
 }
 
 /* ── Dark mode ─────────────────────────────────────────── */
@@ -111,170 +111,154 @@
   :root {
     color-scheme: dark;
 
-    --bg:        #000000;   /* OLED black */
-    --surface-1: #1C1C1E;   /* iOS system gray 6 */
-    --surface-2: #2C2C2E;   /* iOS system gray 5 */
-    --surface-3: #3A3A3C;   /* iOS system gray 4 */
+    /* Zinc-950/900/800 stack — warmth over cold blue-black */
+    --bg:        #09090B;   /* zinc-950 */
+    --surface-1: #111113;   /* slightly warmer than zinc-900 */
+    --surface-2: #18181B;   /* zinc-900 */
+    --surface-3: #27272A;   /* zinc-800 */
 
-    --border:       rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(255, 255, 255, 0.16);
-    --separator:    rgba(84, 84, 88, 0.65);
+    --border:       #27272A;   /* zinc-800 */
+    --border-hover: #3F3F46;   /* zinc-700 */
+    --separator:    #3F3F46;
 
-    --text-primary:   #FFFFFF;
-    --text-secondary: rgba(235, 235, 245, 0.78);
-    --text-tertiary:  rgba(235, 235, 245, 0.50);
-    --text-muted:     rgba(235, 235, 245, 0.22);
+    /* Text — Zinc scale, crisp and readable */
+    --text-primary:   #F4F4F5;   /* zinc-100 — warm white, easy to read */
+    --text-secondary: #D4D4D8;   /* zinc-300 — very readable secondary */
+    --text-tertiary:  #A1A1AA;   /* zinc-400 — metadata */
+    --text-muted:     #71717A;   /* zinc-500 — timestamps (still readable) */
 
-    --blue:    #0A84FF;
-    --green:   #30D158;
-    --red:     #FF453A;
-    --orange:  #FF9F0A;
-    --yellow:  #FFD60A;
-    --purple:  #BF5AF2;
-    --cyan:    #32ADE6;
-    --pink:    #FF375F;
-    --teal:    #40C8E0;
-    --indigo:  #5E5CE6;
+    /* Status — muted 300/400 range, not neon */
+    --status-new:      #C4B5FD;   /* violet-300 */
+    --status-critical: #FCA5A5;   /* red-300 */
+    --status-blocked:  #FCD34D;   /* amber-300 */
+    --status-active:   #6EE7B7;   /* emerald-300 — cool, not neon */
+    --status-paused:   #52525B;   /* zinc-600 — fades into background */
+    --status-complete: #93C5FD;   /* blue-300 */
+    --status-dead:     #27272A;   /* zinc-800 */
 
-    --status-new:      #BF5AF2;
-    --status-critical: #FF453A;
-    --status-blocked:  #FF9F0A;
-    --status-active:   #30D158;
-    --status-paused:   #636366;
-    --status-complete: #0A84FF;
-    --status-dead:     #3A3A3C;
+    /* NEXT ACTION — warm amber-gold */
+    --next-action:       #E8C547;   /* warm gold — distinguished, not orange */
+    --next-action-bg:    #1C1710;   /* very dark amber-brown */
+    --next-action-label: #A08520;   /* dim gold label */
 
-    --next-action:       #FF9F0A;
-    --next-action-bg:    rgba(255, 159, 10, 0.06);
-    --next-action-label: rgba(255, 159, 10, 0.48);
+    /* Color aliases */
+    --red:    var(--status-critical);
+    --green:  var(--status-active);
+    --orange: var(--status-blocked);
+    --blue:   var(--status-complete);
+    --purple: var(--status-new);
 
     --card-shadow:       none;
-    --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.50);
+    --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.60);
 
-    --sidebar-bg: rgba(28, 28, 30, 0.95);
-    --header-bg:  rgba(0, 0, 0, 0.85);
+    --sidebar-bg: rgba(17, 17, 19, 0.96);
+    --header-bg:  rgba(9, 9, 11, 0.88);
 
-    --background:         #000000;
-    --foreground:         #FFFFFF;
-    --card:               #1C1C1E;
-    --card-foreground:    #FFFFFF;
-    --popover:            #2C2C2E;
-    --popover-foreground: #FFFFFF;
-    --primary:            #0A84FF;
-    --primary-foreground: #FFFFFF;
-    --secondary:          #2C2C2E;
-    --secondary-foreground: rgba(235,235,245,0.78);
-    --muted:              #2C2C2E;
-    --muted-foreground:   rgba(235,235,245,0.50);
-    --accent:             #2C2C2E;
-    --accent-foreground:  #0A84FF;
-    --destructive:        #FF453A;
-    --border:             rgba(255, 255, 255, 0.08);
-    --input:              #2C2C2E;
-    --ring:               rgba(10, 132, 255, 0.50);
+    --background:         #09090B;
+    --foreground:         #F4F4F5;
+    --card:               #111113;
+    --card-foreground:    #F4F4F5;
+    --popover:            #18181B;
+    --popover-foreground: #F4F4F5;
+    --primary:            #93C5FD;
+    --primary-foreground: #18181B;
+    --secondary:          #18181B;
+    --secondary-foreground: #D4D4D8;
+    --muted:              #18181B;
+    --muted-foreground:   #A1A1AA;
+    --accent:             #27272A;
+    --accent-foreground:  #93C5FD;
+    --destructive:        #FCA5A5;
+    --border:             #27272A;
+    --input:              #27272A;
+    --ring:               rgba(147, 197, 253, 0.30);
   }
 }
 
-/* ── Manual .dark class override (for toggle) ─────────── */
+/* ── Manual .dark override ─────────────────────────────── */
 :root.dark {
   color-scheme: dark;
-
-  --bg:        #000000;
-  --surface-1: #1C1C1E;
-  --surface-2: #2C2C2E;
-  --surface-3: #3A3A3C;
-
-  --border:       rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.16);
-  --separator:    rgba(84, 84, 88, 0.65);
-
-  --text-primary:   #FFFFFF;
-  --text-secondary: rgba(235, 235, 245, 0.78);
-  --text-tertiary:  rgba(235, 235, 245, 0.50);
-  --text-muted:     rgba(235, 235, 245, 0.22);
-
-  --blue:    #0A84FF;
-  --green:   #30D158;
-  --red:     #FF453A;
-  --orange:  #FF9F0A;
-  --yellow:  #FFD60A;
-  --purple:  #BF5AF2;
-
-  --status-new:      #BF5AF2;
-  --status-critical: #FF453A;
-  --status-blocked:  #FF9F0A;
-  --status-active:   #30D158;
-  --status-paused:   #636366;
-  --status-complete: #0A84FF;
-  --status-dead:     #3A3A3C;
-
-  --next-action:       #FF9F0A;
-  --next-action-bg:    rgba(255, 159, 10, 0.06);
-  --next-action-label: rgba(255, 159, 10, 0.48);
-
+  --bg:        #09090B;
+  --surface-1: #111113;
+  --surface-2: #18181B;
+  --surface-3: #27272A;
+  --border:       #27272A;
+  --border-hover: #3F3F46;
+  --separator:    #3F3F46;
+  --text-primary:   #F4F4F5;
+  --text-secondary: #D4D4D8;
+  --text-tertiary:  #A1A1AA;
+  --text-muted:     #71717A;
+  --status-new:      #C4B5FD;
+  --status-critical: #FCA5A5;
+  --status-blocked:  #FCD34D;
+  --status-active:   #6EE7B7;
+  --status-paused:   #52525B;
+  --status-complete: #93C5FD;
+  --status-dead:     #27272A;
+  --next-action:       #E8C547;
+  --next-action-bg:    #1C1710;
+  --next-action-label: #A08520;
+  --red:    var(--status-critical);
+  --green:  var(--status-active);
+  --orange: var(--status-blocked);
+  --blue:   var(--status-complete);
+  --purple: var(--status-new);
   --card-shadow:       none;
-  --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.50);
-
-  --sidebar-bg: rgba(28, 28, 30, 0.95);
-  --header-bg:  rgba(0, 0, 0, 0.85);
-
-  --background:         #000000;
-  --foreground:         #FFFFFF;
-  --card:               #1C1C1E;
-  --card-foreground:    #FFFFFF;
+  --card-shadow-hover: 0 8px 32px rgba(0,0,0,0.60);
+  --sidebar-bg: rgba(17, 17, 19, 0.96);
+  --header-bg:  rgba(9, 9, 11, 0.88);
+  --background:         #09090B;
+  --foreground:         #F4F4F5;
+  --card:               #111113;
+  --card-foreground:    #F4F4F5;
+  --primary:            #93C5FD;
+  --border:             #27272A;
 }
 
-/* ── Manual .light class override ────────────────────────*/
+/* ── Manual .light override ────────────────────────────── */
 :root.light {
   color-scheme: light;
-
-  --bg:        #F2F2F7;
+  --bg:        #F5F5F7;
   --surface-1: #FFFFFF;
-  --surface-2: #F2F2F7;
-  --surface-3: #E5E5EA;
-
-  --border:       rgba(60, 60, 67, 0.12);
-  --border-hover: rgba(60, 60, 67, 0.22);
-  --separator:    rgba(60, 60, 67, 0.29);
-
-  --text-primary:   #000000;
-  --text-secondary: rgba(60, 60, 67, 0.78);
-  --text-tertiary:  rgba(60, 60, 67, 0.50);
-  --text-muted:     rgba(60, 60, 67, 0.26);
-
-  --blue:    #007AFF;
-  --green:   #34C759;
-  --red:     #FF3B30;
-  --orange:  #FF9500;
-  --yellow:  #FFCC00;
-  --purple:  #AF52DE;
-
-  --status-new:      #AF52DE;
-  --status-critical: #FF3B30;
-  --status-blocked:  #FF9500;
-  --status-active:   #34C759;
-  --status-paused:   #8E8E93;
-  --status-complete: #007AFF;
-  --status-dead:     #C7C7CC;
-
-  --next-action:       #C65200;
-  --next-action-bg:    rgba(255, 149, 0, 0.08);
-  --next-action-label: rgba(198, 82, 0, 0.48);
-
-  --card-shadow:       0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
-  --card-shadow-hover: 0 6px 20px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.06);
-
-  --sidebar-bg: rgba(242, 242, 247, 0.92);
-  --header-bg:  rgba(242, 242, 247, 0.85);
-
-  --background:         #F2F2F7;
-  --foreground:         #000000;
+  --surface-2: #F5F5F7;
+  --surface-3: #EBEBED;
+  --border:       #E4E4E7;
+  --border-hover: #D4D4D8;
+  --separator:    #E4E4E7;
+  --text-primary:   #18181B;
+  --text-secondary: #52525B;
+  --text-tertiary:  #71717A;
+  --text-muted:     #A1A1AA;
+  --status-new:      #7C3AED;
+  --status-critical: #DC2626;
+  --status-blocked:  #D97706;
+  --status-active:   #059669;
+  --status-paused:   #71717A;
+  --status-complete: #2563EB;
+  --status-dead:     #D4D4D8;
+  --next-action:       #92400E;
+  --next-action-bg:    #FFFBEB;
+  --next-action-label: #B45309;
+  --red:    var(--status-critical);
+  --green:  var(--status-active);
+  --orange: var(--status-blocked);
+  --blue:   var(--status-complete);
+  --purple: var(--status-new);
+  --card-shadow:       0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.08);
+  --card-shadow-hover: 0 4px 16px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+  --sidebar-bg: rgba(245, 245, 247, 0.94);
+  --header-bg:  rgba(245, 245, 247, 0.88);
+  --background:         #F5F5F7;
+  --foreground:         #18181B;
   --card:               #FFFFFF;
-  --card-foreground:    #000000;
+  --card-foreground:    #18181B;
+  --primary:            #2563EB;
+  --border:             #E4E4E7;
 }
 
 /* ─────────────────────────────────────────────────────────
-   BASE STYLES
+   BASE
    ───────────────────────────────────────────────────────── */
 @layer base {
   * { box-sizing: border-box; }
@@ -290,13 +274,10 @@
     color: var(--text-primary);
     background-color: var(--bg);
     min-height: 100%;
-    transition: background-color 200ms ease, color 200ms ease;
+    transition: background-color 220ms ease, color 220ms ease;
   }
 }
 
-/* ─────────────────────────────────────────────────────────
-   TYPOGRAPHY
-   ───────────────────────────────────────────────────────── */
 .font-display { font-family: var(--font-display); }
 .font-mono    { font-family: var(--font-mono); }
 
@@ -305,13 +286,8 @@
    ───────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: var(--separator);
-  border-radius: 2px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--border-hover);
-}
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--separator); }
 
 /* ─────────────────────────────────────────────────────────
    REDUCED MOTION

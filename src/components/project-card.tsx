@@ -119,8 +119,8 @@ export function ProjectCard({ project: p }: { project: Project }) {
           </div>
         </div>
         <p
-          className="text-[12px] leading-snug line-clamp-1"
-          style={{ color: 'var(--text-tertiary)' }}
+          className="text-[12px] leading-snug line-clamp-2"
+          style={{ color: 'var(--text-secondary)' }}
         >
           {p.description}
         </p>
@@ -138,7 +138,7 @@ export function ProjectCard({ project: p }: { project: Project }) {
           Next Action
         </p>
         <p
-          className="text-[13px] font-medium leading-snug"
+          className="text-[13.5px] font-medium leading-snug"
           style={{ color: 'var(--next-action)' }}
         >
           {p.nextAction}
