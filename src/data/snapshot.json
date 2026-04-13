@@ -31,8 +31,11 @@
     "lastCommitAuthor": "Gregorio von Hildebrand",
     "totalCommits": 1,
     "activeBranch": "main",
+    "commitHistory": {
+      "2026-03-27": 1
+    },
     "statusSummary": "MyAgent.Works — Executive Summary  Status: Ready to Build | Target Launch: May 1, 2026",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "vigilia",
@@ -63,8 +66,13 @@
     "lastCommitAuthor": "Vigilia",
     "totalCommits": 33,
     "activeBranch": "main",
+    "commitHistory": {
+      "2026-04-13": 15,
+      "2026-04-12": 17,
+      "2026-04-11": 1
+    },
     "statusSummary": "Regenerative Intelligence SaaS — connects business ecosystems with bioregional ecological data.",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "ai-workflow-studio",
@@ -94,8 +102,14 @@
     "lastCommitAuthor": "GvHildebrand",
     "totalCommits": 23,
     "activeBranch": "main",
+    "commitHistory": {
+      "2026-04-10": 1,
+      "2026-04-08": 11,
+      "2026-04-07": 10,
+      "2026-04-01": 1
+    },
     "statusSummary": "This is a Next.js(https://nextjs.org) project bootstrapped with create-next-app(https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "kiwi-refund-agent",
@@ -117,13 +131,16 @@
       "refund",
       "email-agent"
     ],
-    "lastCommitHash": "127aa4a",
-    "lastCommitMessage": "[POOR PHILL] Dead channel detected: support@kiwi.com is now no-reply — halted, human review required",
-    "lastCommitDate": "2026-04-13T14:45:49-06:00",
+    "lastCommitHash": "a1c7a8d",
+    "lastCommitMessage": "[POOR PHILL] Received email from contact@support.kiwi.com: \"Re: UNRESOLVED: Duplicate Charge Ã¢Â€Â” Flight WS2153 | EU C\" — intent: unknown",
+    "lastCommitDate": "2026-04-13T16:00:09-06:00",
     "lastCommitAuthor": "Gregorio von Hildebrand",
-    "totalCommits": 16,
+    "totalCommits": 22,
     "activeBranch": "main",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "commitHistory": {
+      "2026-04-13": 22
+    },
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "refund-agent",
@@ -153,8 +170,13 @@
     "lastCommitAuthor": "PORFÍO Agent",
     "totalCommits": 12,
     "activeBranch": "main",
+    "commitHistory": {
+      "2026-04-13": 1,
+      "2026-04-12": 9,
+      "2026-04-11": 2
+    },
     "statusSummary": "PORFÍO — Autonomous Refund Recovery Agent",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "vigilia-gtm-agents",
@@ -181,8 +203,11 @@
     "lastCommitAuthor": "Vigilia GTM Agent",
     "totalCommits": 2,
     "activeBranch": "main",
+    "commitHistory": {
+      "2026-04-12": 2
+    },
     "statusSummary": "Vigilia GTM TaskForce — Workspace Instructions",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "escape-babylon-agent",
@@ -204,7 +229,7 @@
       "verify-running"
     ],
     "statusSummary": "WHO YOU ARE You are the autonomous content orchestrator for Escape Babylon. Your sole mission: generate daily content that helps people escape  centralized systems and move toward land sovereignty, nature,  and intention",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "biomirror",
@@ -234,8 +259,11 @@
     "lastCommitAuthor": "Gregorio von Hildebrand",
     "totalCommits": 1,
     "activeBranch": "main",
+    "commitHistory": {
+      "2026-04-10": 1
+    },
     "statusSummary": "Regenerative Intelligence SaaS — connects business ecosystems with bioregional ecological data.",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "engineering-foundations",
@@ -254,7 +282,7 @@
       "evergreen"
     ],
     "statusSummary": "Engineering Foundations: A Pattern Library for Production SaaS",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "infrastructure",
@@ -273,7 +301,7 @@
       "templates"
     ],
     "statusSummary": "Infrastructure — Reusable AI Company Patterns",
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   },
   {
     "id": "my-master-agent-genesis",
@@ -289,6 +317,6 @@
       "abandoned",
       "cleanup"
     ],
-    "syncedAt": "2026-04-13T20:47:31.009Z"
+    "syncedAt": "2026-04-13T22:45:43.052Z"
   }
 ]

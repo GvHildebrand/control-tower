@@ -1,42 +1,34 @@
-/*
-  Tech stack tags — deliberately restrained.
-  A card already has status color, left border, NEXT ACTION color.
-  Tags should be quiet: neutral surface, secondary text.
-  Only 1-2 key techs get a subtle color hint to aid scanning.
-*/
+/* Quiet tech pills — surface-3 bg, meta text, very subtle color hint for key stacks */
 
-const TECH_HUE: Record<string, string> = {
-  'TypeScript':  'var(--status-complete)',   /* blue */
-  'React':       'var(--status-complete)',
-  'Next.js':     'var(--text-secondary)',
-  'Supabase':    'var(--status-active)',     /* emerald */
-  'Node.js':     'var(--status-active)',
-  'Python':      'var(--status-blocked)',    /* amber */
-  'Stripe':      'var(--status-new)',        /* violet */
-  'Claude':      'var(--status-blocked)',
-  'Gmail API':   'var(--status-critical)',   /* red */
+const KEY_TECH_COLOR: Record<string, string> = {
+  'TypeScript': 'var(--blue)',
+  'Supabase':   'var(--green)',
+  'Stripe':     'var(--purple)',
+  'Claude':     'var(--orange)',
 }
 
 export function TechStackTags({ stack, max = 4 }: { stack: string[]; max?: number }) {
   const visible  = stack.slice(0, max)
   const overflow = stack.length - max
-
   return (
-    <div className="flex flex-wrap gap-1">
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
       {visible.map((tech) => {
-        const hue = TECH_HUE[tech]
+        const hue = KEY_TECH_COLOR[tech]
         return (
           <span
             key={tech}
-            className="inline-block px-2 py-0.5 rounded-md text-[10px] font-medium"
             style={{
-              /* Neutral surface — only primary tech gets a faint hue */
-              background: hue
-                ? `color-mix(in srgb, ${hue} 8%, var(--surface-3))`
+              display:      'inline-block',
+              padding:      '3px 8px',
+              borderRadius: 6,
+              fontSize:     11,
+              fontWeight:   500,
+              background:   hue
+                ? `color-mix(in srgb, ${hue} 9%, var(--surface-3))`
                 : 'var(--surface-3)',
               color: hue
-                ? `color-mix(in srgb, ${hue} 70%, var(--text-tertiary))`
-                : 'var(--text-tertiary)',
+                ? `color-mix(in srgb, ${hue} 65%, var(--text-meta))`
+                : 'var(--text-meta)',
               fontFamily: 'var(--font-mono)',
             }}
           >
@@ -46,11 +38,15 @@ export function TechStackTags({ stack, max = 4 }: { stack: string[]; max?: numbe
       })}
       {overflow > 0 && (
         <span
-          className="inline-block px-2 py-0.5 rounded-md text-[10px] font-medium"
           style={{
-            background: 'var(--surface-3)',
-            color: 'var(--text-muted)',
-            fontFamily: 'var(--font-mono)',
+            display:      'inline-block',
+            padding:      '3px 8px',
+            borderRadius: 6,
+            fontSize:     11,
+            fontWeight:   500,
+            background:   'var(--surface-3)',
+            color:        'var(--text-meta)',
+            fontFamily:   'var(--font-mono)',
           }}
         >
           +{overflow}

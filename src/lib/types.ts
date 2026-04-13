@@ -42,6 +42,7 @@ export interface Project {
   totalCommits?: number
   activeBranch?: string
   statusSummary?: string    // from CLAUDE.md / EXEC_SUMMARY.md
+  commitHistory?: Record<string, number>  // "YYYY-MM-DD" → commit count (90 days)
   syncedAt: string
 }
 
@@ -54,5 +55,6 @@ export type ProjectConfig = Omit<
   | 'totalCommits'
   | 'activeBranch'
   | 'statusSummary'
+  | 'commitHistory'
   | 'syncedAt'
 >

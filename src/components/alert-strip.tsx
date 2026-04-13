@@ -3,61 +3,138 @@ import type { Project } from '@/lib/types'
 export function AlertStrip({ projects }: { projects: Project[] }) {
   if (projects.length === 0) return null
 
+  // Show the first (highest-priority) critical project prominently
+  const primary   = projects[0]
+  const remaining = projects.length - 1
+
   return (
     <div
-      className="mx-4 mt-3 rounded-xl px-5 py-2.5 flex items-center gap-3 flex-wrap"
       style={{
-        background: 'color-mix(in srgb, var(--status-critical) 8%, var(--surface-1))',
-        border:     '1px solid color-mix(in srgb, var(--status-critical) 22%, transparent)',
+        margin:         '12px 16px 0',
+        borderRadius:   14,
+        padding:        '11px 16px',
+        display:        'flex',
+        alignItems:     'center',
+        gap:            12,
+        background:     'color-mix(in srgb, var(--red) 8%, var(--surface-1))',
       }}
     >
-      <div className="flex items-center gap-2 shrink-0">
-        <span className="relative flex shrink-0" style={{ width: 8, height: 8 }}>
-          <span
-            className="absolute inline-flex rounded-full animate-ping"
-            style={{ inset: 0, background: 'var(--status-critical)', opacity: 0.5 }}
-          />
-          <span
-            className="relative inline-flex rounded-full"
-            style={{ width: 8, height: 8, background: 'var(--status-critical)' }}
-          />
-        </span>
+      {/* Pulsing dot */}
+      <span
+        style={{
+          position:   'relative',
+          display:    'inline-flex',
+          width:      8,
+          height:     8,
+          flexShrink: 0,
+        }}
+      >
         <span
-          className="text-[11px] font-semibold tracking-widest uppercase"
-          style={{ color: 'var(--status-critical)', fontFamily: 'var(--font-mono)' }}
-        >
-          Needs Immediate Action
-        </span>
-      </div>
+          className="animate-ping"
+          style={{
+            position:     'absolute',
+            inset:        0,
+            borderRadius: '50%',
+            background:   'var(--red)',
+            opacity:      0.5,
+          }}
+        />
+        <span
+          style={{
+            position:     'relative',
+            width:        8,
+            height:       8,
+            borderRadius: '50%',
+            background:   'var(--red)',
+          }}
+        />
+      </span>
 
+      {/* Label */}
+      <span
+        style={{
+          fontSize:      11,
+          fontWeight:    600,
+          letterSpacing: '0.10em',
+          textTransform: 'uppercase' as const,
+          color:         'var(--red)',
+          fontFamily:    'var(--font-mono)',
+          flexShrink:    0,
+          whiteSpace:    'nowrap' as const,
+        }}
+      >
+        Immediate Action Required
+      </span>
+
+      {/* Divider */}
       <div
-        className="hidden sm:block self-stretch w-px"
-        style={{ background: 'color-mix(in srgb, var(--status-critical) 25%, transparent)' }}
+        style={{
+          width:      1,
+          height:     14,
+          background: 'color-mix(in srgb, var(--red) 25%, transparent)',
+          flexShrink: 0,
+        }}
       />
 
-      <div className="flex flex-wrap gap-1.5">
-        {projects.map((proj) => (
-          <span
-            key={proj.id}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium"
-            style={{
-              background: 'color-mix(in srgb, var(--status-critical) 10%, var(--surface-1))',
-              border:     '1px solid color-mix(in srgb, var(--status-critical) 22%, transparent)',
-              color:      'var(--status-critical)',
-            }}
-          >
-            <span
-              className="rounded-full shrink-0"
-              style={{
-                width: 6,
-                height: 6,
-                background: proj.status === 'critical' ? 'var(--status-critical)' : 'var(--status-blocked)',
-              }}
-            />
-            {proj.name}
-          </span>
-        ))}
-      </div>
+      {/* Project name + truncated next action */}
+      <span
+        style={{
+          fontSize:     13,
+          fontWeight:   600,
+          color:        'var(--text-primary)',
+          fontFamily:   'var(--font-display)',
+          whiteSpace:   'nowrap' as const,
+          flexShrink:   0,
+        }}
+      >
+        {primary.name}
+      </span>
+      <span
+        style={{
+          fontSize:    13,
+          color:       'var(--text-secondary)',
+          overflow:    'hidden',
+          textOverflow:'ellipsis',
+          whiteSpace:  'nowrap' as const,
+          minWidth:    0,
+          flex:        1,
+        }}
+      >
+        {primary.nextAction.length > 72
+          ? primary.nextAction.slice(0, 72) + '…'
+          : primary.nextAction}
+      </span>
+
+      {/* Overflow badge */}
+      {remaining > 0 && (
+        <span
+          style={{
+            fontSize:     11,
+            fontWeight:   600,
+            color:        'var(--red)',
+            fontFamily:   'var(--font-mono)',
+            flexShrink:   0,
+            whiteSpace:   'nowrap' as const,
+          }}
+        >
+          +{remaining} more
+        </span>
+      )}
+
+      {/* Open arrow */}
+      <span
+        style={{
+          fontSize:     12,
+          fontWeight:   600,
+          color:        'var(--red)',
+          fontFamily:   'var(--font-mono)',
+          flexShrink:   0,
+          whiteSpace:   'nowrap' as const,
+        }}
+        aria-hidden="true"
+      >
+        ↓
+      </span>
     </div>
   )
 }

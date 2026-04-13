@@ -4,6 +4,8 @@ import { SummaryRow } from '@/components/summary-row'
 import { ProjectGrid } from '@/components/project-grid'
 import { Sidebar } from '@/components/sidebar'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { DailyGreeting } from '@/components/daily-greeting'
+import greetingData from '@/data/daily-greeting.json'
 
 const syncedAt = snapshot[0]?.syncedAt ?? new Date().toISOString()
 
@@ -35,13 +37,13 @@ export default function Page() {
                 className="text-[22px] font-semibold leading-none tracking-[-0.02em]"
                 style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}
               >
-                Mission Control
+                Solomon
               </h1>
               <p
                 className="text-[11px] mt-1 tracking-widest uppercase"
-                style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}
+                style={{ color: 'var(--text-meta)', fontFamily: 'var(--font-mono)' }}
               >
-                Project Command Center
+                Strategic Project Command
               </p>
             </div>
 
@@ -84,6 +86,10 @@ export default function Page() {
 
           <SummaryRow counts={counts} syncedAt={syncedAt} />
         </header>
+
+        <div className="px-4 pt-3">
+          <DailyGreeting data={greetingData} />
+        </div>
 
         <AlertStrip projects={critical} />
 

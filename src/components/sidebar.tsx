@@ -1,82 +1,113 @@
 'use client'
 
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
 const NavIcon = ({
   children,
   active,
   label,
+  href,
 }: {
   children: React.ReactNode
   active?: boolean
   label: string
+  href: string
 }) => (
-  <button
+  <Link
+    href={href}
     title={label}
     aria-label={label}
-    className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
-    style={
-      active
-        ? {
-            background: 'var(--blue)',
-            color: '#FFFFFF',
-            boxShadow: '0 4px 14px color-mix(in srgb, var(--blue) 35%, transparent)',
-          }
-        : {
-            background: 'transparent',
-            color: 'var(--text-muted)',
-          }
-    }
+    style={{
+      width:      44,
+      height:     44,
+      borderRadius: 12,
+      display:    'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor:     'pointer',
+      textDecoration: 'none',
+      background: active ? 'rgba(29, 78, 216, 0.08)' : 'transparent',
+      color:      active ? '#1D4ED8'                  : 'var(--text-meta)',
+      transition: 'transform 180ms cubic-bezier(.4,0,.2,1), background 150ms ease, color 150ms ease',
+    }}
     onMouseEnter={e => {
+      const el = e.currentTarget as HTMLElement
+      el.style.transform = 'scale(1.12)'
       if (!active) {
-        (e.currentTarget as HTMLButtonElement).style.background = 'var(--surface-3)'
-        ;(e.currentTarget as HTMLButtonElement).style.color = 'var(--text-secondary)'
+        el.style.background = 'rgba(14, 116, 144, 0.06)'
+        el.style.color      = '#0E7490'
       }
     }}
     onMouseLeave={e => {
+      const el = e.currentTarget as HTMLElement
+      el.style.transform  = ''
       if (!active) {
-        (e.currentTarget as HTMLButtonElement).style.background = 'transparent'
-        ;(e.currentTarget as HTMLButtonElement).style.color = 'var(--text-muted)'
+        el.style.background = 'transparent'
+        el.style.color      = 'var(--text-meta)'
       }
     }}
   >
     {children}
-  </button>
+  </Link>
 )
 
 export function Sidebar({ criticalCount }: { criticalCount: number }) {
+  const pathname = usePathname()
+
   return (
     <aside
-      className="fixed left-0 top-0 h-full w-[72px] flex flex-col items-center py-5 gap-3 z-40"
       style={{
-        background: 'var(--sidebar-bg)',
-        backdropFilter: 'blur(20px)',
+        position:  'fixed',
+        left:      0,
+        top:       0,
+        height:    '100%',
+        width:     72,
+        display:   'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingTop: 20,
+        paddingBottom: 20,
+        gap:       12,
+        zIndex:    40,
+        background:        'var(--sidebar-bg)',
+        backdropFilter:    'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderRight: '1px solid var(--border)',
       }}
     >
       {/* Logo mark */}
       <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center mb-2"
         style={{
-          background: 'var(--blue)',
-          boxShadow: '0 4px 16px color-mix(in srgb, var(--blue) 40%, transparent)',
+          width:        44,
+          height:       44,
+          borderRadius: 12,
+          display:      'flex',
+          alignItems:   'center',
+          justifyContent: 'center',
+          marginBottom: 8,
+          background:   'var(--navy)',
+          boxShadow:    '0 4px 16px rgba(15,45,82,0.35)',
+          transition:   'transform 180ms cubic-bezier(.4,0,.2,1)',
+          cursor:       'default',
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLElement).style.transform = 'scale(1.08)'
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLElement).style.transform = ''
         }}
       >
-        <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
-          <path
-            d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-            stroke="white"
-            strokeWidth="1.5"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          {/* Solomon prism mark */}
+          <polygon points="12,3 22,18 2,18" fill="none" stroke="white" strokeWidth="1.5" strokeLinejoin="round"/>
+          <circle cx="12" cy="13" r="3" fill="#0E7490"/>
         </svg>
       </div>
 
-      <div className="w-8 h-px my-1" style={{ background: 'var(--border)' }} />
+      <div style={{ width: 32, height: 1, background: 'var(--border)' }} />
 
-      <NavIcon active label="Dashboard">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+      <NavIcon active={pathname === '/'} href="/" label="Dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
           <rect x="3" y="3" width="7" height="7" rx="1.5"/>
           <rect x="14" y="3" width="7" height="7" rx="1.5"/>
           <rect x="3" y="14" width="7" height="7" rx="1.5"/>
@@ -84,48 +115,66 @@ export function Sidebar({ criticalCount }: { criticalCount: number }) {
         </svg>
       </NavIcon>
 
-      <NavIcon label="Activity">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+      <NavIcon active={pathname === '/activity'} href="/activity" label="Activity">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
         </svg>
       </NavIcon>
 
-      <NavIcon label="Analytics">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+      <NavIcon active={pathname === '/analytics'} href="/analytics" label="Analytics">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
           <line x1="18" y1="20" x2="18" y2="10"/>
           <line x1="12" y1="20" x2="12" y2="4"/>
           <line x1="6" y1="20" x2="6" y2="14"/>
         </svg>
       </NavIcon>
 
-      <NavIcon label="Settings">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+      <NavIcon active={pathname === '/settings'} href="/settings" label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
           <circle cx="12" cy="12" r="3"/>
           <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
         </svg>
       </NavIcon>
 
-      <div className="flex-1" />
+      <div style={{ flex: 1 }} />
 
-      {/* Critical alert */}
+      {/* Critical alert badge */}
       {criticalCount > 0 && (
-        <div className="relative w-11 h-11 flex items-center justify-center">
+        <div style={{ position: 'relative', width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center"
             style={{
-              background: 'color-mix(in srgb, var(--status-critical) 10%, var(--surface-1))',
-              border:     '1px solid color-mix(in srgb, var(--status-critical) 22%, transparent)',
+              width:        40,
+              height:       40,
+              borderRadius: 12,
+              display:      'flex',
+              alignItems:   'center',
+              justifyContent: 'center',
+              background:   'color-mix(in srgb, var(--red) 10%, var(--surface-1))',
             }}
           >
-            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" style={{ stroke: 'var(--status-critical)' }} aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="20" height="20" style={{ stroke: 'var(--red)' }} aria-hidden="true">
               <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
               <line x1="12" y1="9" x2="12" y2="13"/>
               <line x1="12" y1="17" x2="12.01" y2="17"/>
             </svg>
           </div>
           <span
-            className="absolute -top-1 -right-1 w-[18px] h-[18px] rounded-full text-[10px] font-semibold flex items-center justify-center"
-            style={{ background: 'var(--status-critical)', color: '#FFFFFF' }}
+            style={{
+              position:   'absolute',
+              top:        -2,
+              right:      -2,
+              width:      18,
+              height:     18,
+              borderRadius: '50%',
+              fontSize:   10,
+              fontWeight: 600,
+              display:    'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'var(--red)',
+              color:      '#FFFFFF',
+              fontFamily: 'var(--font-mono)',
+            }}
           >
             {criticalCount}
           </span>
