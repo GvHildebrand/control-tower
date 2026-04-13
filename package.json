@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "sync": "tsx scripts/sync.ts",
+    "sync:push": "tsx scripts/sync.ts && git add src/data/snapshot.json && git commit -m 'chore: sync project snapshot' && git push"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
@@ -25,6 +27,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

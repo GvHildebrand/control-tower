@@ -1,0 +1,294 @@
+[
+  {
+    "id": "project-genesis",
+    "name": "Project Genesis",
+    "type": "saas-nextjs",
+    "description": "MyAgent.Works — AI workflow builder SaaS with self-evolving agent framework.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/Project Genesis",
+    "vercelUrl": "https://myagent.works",
+    "status": "critical",
+    "priority": "CRITICAL",
+    "progressPercent": 40,
+    "nextAction": "Implement Stripe billing — PRIORITY 0, nothing else ships until this is done.",
+    "blockers": [
+      "No payment flow = zero revenue at launch"
+    ],
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Stripe",
+      "Tailwind"
+    ],
+    "tags": [
+      "billing",
+      "saas",
+      "launch-blocker"
+    ],
+    "lastCommitHash": "b745c9a",
+    "lastCommitMessage": "Initial commit: Project Genesis with self-annealing evolution system",
+    "lastCommitDate": "2026-03-27T23:19:10-06:00",
+    "lastCommitAuthor": "Gregorio von Hildebrand",
+    "totalCommits": 1,
+    "activeBranch": "main",
+    "statusSummary": "MyAgent.Works — Executive Summary  Status: Ready to Build | Target Launch: May 1, 2026",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "vigilia",
+    "name": "Vigilia",
+    "type": "saas-nextjs",
+    "description": "Open-source AI Agent Governance & Compliance SaaS. AGPL licensed.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/vigilia",
+    "vercelUrl": "https://vigilia.ai",
+    "status": "active",
+    "priority": "HIGH",
+    "progressPercent": 65,
+    "nextAction": "Complete landing page conversion flow and compliance report export feature.",
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Docker",
+      "Tailwind"
+    ],
+    "tags": [
+      "open-source",
+      "compliance",
+      "active-dev"
+    ],
+    "lastCommitHash": "be08135",
+    "lastCommitMessage": "feat: landing page conversion overhaul — product card, example result, regulation urgency, quiz, who it's for",
+    "lastCommitDate": "2026-04-13T02:57:42-06:00",
+    "lastCommitAuthor": "Vigilia",
+    "totalCommits": 33,
+    "activeBranch": "main",
+    "statusSummary": "Regenerative Intelligence SaaS — connects business ecosystems with bioregional ecological data.",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "ai-workflow-studio",
+    "name": "AI Workflow Studio",
+    "type": "saas-nextjs",
+    "description": "Visual workflow builder and AI agent execution platform.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/ai-workflow-studio",
+    "status": "active",
+    "priority": "HIGH",
+    "progressPercent": 55,
+    "nextAction": "Continue intelligence layer work — check last commit message for exact task.",
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "D3",
+      "Three.js",
+      "Tailwind"
+    ],
+    "tags": [
+      "active-dev",
+      "visualization"
+    ],
+    "lastCommitHash": "de0f786",
+    "lastCommitMessage": "feat: workflow studio updates and ecosystem improvements",
+    "lastCommitDate": "2026-04-10T01:18:25-06:00",
+    "lastCommitAuthor": "GvHildebrand",
+    "totalCommits": 23,
+    "activeBranch": "main",
+    "statusSummary": "This is a Next.js(https://nextjs.org) project bootstrapped with create-next-app(https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "kiwi-refund-agent",
+    "name": "Kiwi Refund Agent",
+    "type": "agent-node",
+    "description": "Gmail-based autonomous refund recovery agent for Kiwi.com duplicate charge.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/Kiwi-Refund-Agent",
+    "status": "active",
+    "priority": "MEDIUM",
+    "nextAction": "Check if Kiwi.com has responded; verify reply-filter fix is working correctly.",
+    "techStack": [
+      "Node.js",
+      "TypeScript",
+      "Gmail API",
+      "Claude"
+    ],
+    "tags": [
+      "live-daemon",
+      "refund",
+      "email-agent"
+    ],
+    "lastCommitHash": "127aa4a",
+    "lastCommitMessage": "[POOR PHILL] Dead channel detected: support@kiwi.com is now no-reply — halted, human review required",
+    "lastCommitDate": "2026-04-13T14:45:49-06:00",
+    "lastCommitAuthor": "Gregorio von Hildebrand",
+    "totalCommits": 16,
+    "activeBranch": "main",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "refund-agent",
+    "name": "PORFÍO — Refund Agent",
+    "type": "agent-node",
+    "description": "Autonomous email agent for Batik Air / Booking.com refund (~$900, PNR: ECSOXB).",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/refund-agent",
+    "status": "active",
+    "priority": "MEDIUM",
+    "nextAction": "Monitor GitHub Actions 24/7 daemon; escalate to MAVCOM if no response.",
+    "techStack": [
+      "Node.js",
+      "TypeScript",
+      "Gmail API",
+      "GitHub Actions",
+      "Claude"
+    ],
+    "tags": [
+      "live-daemon",
+      "refund",
+      "24-7",
+      "email-agent"
+    ],
+    "lastCommitHash": "fa8f29d",
+    "lastCommitMessage": "Rename: PORFÍO → Poor Phill across all source files and workflow",
+    "lastCommitDate": "2026-04-13T11:55:45-06:00",
+    "lastCommitAuthor": "PORFÍO Agent",
+    "totalCommits": 12,
+    "activeBranch": "main",
+    "statusSummary": "PORFÍO — Autonomous Refund Recovery Agent",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "vigilia-gtm-agents",
+    "name": "Vigilia GTM Agents",
+    "type": "agent-node",
+    "description": "7-agent 24/7 Go-To-Market orchestration system for Vigilia.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/Vigilia GoToMarket Agents",
+    "status": "active",
+    "priority": "MEDIUM",
+    "nextAction": "Run daily/weekly loops; monitor stages/ output quality; check analytics agent.",
+    "techStack": [
+      "Node.js",
+      "TypeScript",
+      "taskforce-aiagent"
+    ],
+    "tags": [
+      "multi-agent",
+      "gtm",
+      "live-daemon"
+    ],
+    "lastCommitHash": "c2464a3",
+    "lastCommitMessage": "[VIGILIA-GTM] Init: state initialized",
+    "lastCommitDate": "2026-04-12T15:33:39-06:00",
+    "lastCommitAuthor": "Vigilia GTM Agent",
+    "totalCommits": 2,
+    "activeBranch": "main",
+    "statusSummary": "Vigilia GTM TaskForce — Workspace Instructions",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "escape-babylon-agent",
+    "name": "Escape Babylon Agent",
+    "type": "agent-python",
+    "description": "Daily content orchestration agent for philosophy / off-grid living brand.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/Escape Babylon Agent",
+    "status": "paused",
+    "priority": "MEDIUM",
+    "nextAction": "Verify Ollama + Telegram integration is running; review output/ for recent runs.",
+    "techStack": [
+      "Python",
+      "Ollama",
+      "Telegram",
+      "RSS"
+    ],
+    "tags": [
+      "content-agent",
+      "verify-running"
+    ],
+    "statusSummary": "WHO YOU ARE You are the autonomous content orchestrator for Escape Babylon. Your sole mission: generate daily content that helps people escape  centralized systems and move toward land sovereignty, nature,  and intention",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "biomirror",
+    "name": "BioMirror",
+    "type": "saas-nextjs",
+    "description": "Regenerative Intelligence SaaS — connects businesses with bioregional ecological data.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/biomirror",
+    "status": "paused",
+    "priority": "LOW",
+    "progressPercent": 5,
+    "nextAction": "Only 1 commit exists. Define MVP scope and core user story before writing more code.",
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "D3",
+      "GSAP",
+      "Tailwind"
+    ],
+    "tags": [
+      "early-stage",
+      "needs-scope"
+    ],
+    "lastCommitHash": "052d0bf",
+    "lastCommitMessage": "Initial commit from Create Next App",
+    "lastCommitDate": "2026-04-10T14:15:44-06:00",
+    "lastCommitAuthor": "Gregorio von Hildebrand",
+    "totalCommits": 1,
+    "activeBranch": "main",
+    "statusSummary": "Regenerative Intelligence SaaS — connects business ecosystems with bioregional ecological data.",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "engineering-foundations",
+    "name": "Engineering Foundations",
+    "type": "docs",
+    "description": "Battle-tested production SaaS patterns — 14-doc reference library used across all projects.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/Engineering-Foundations",
+    "status": "complete",
+    "priority": "LOW",
+    "nextAction": "Reference only — no action needed. Update when new patterns emerge.",
+    "techStack": [
+      "Markdown"
+    ],
+    "tags": [
+      "reference",
+      "evergreen"
+    ],
+    "statusSummary": "Engineering Foundations: A Pattern Library for Production SaaS",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "infrastructure",
+    "name": "Infrastructure Templates",
+    "type": "docs",
+    "description": "Reusable MWP templates, regulatory intelligence, and open-core playbooks.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/infrastructure",
+    "status": "complete",
+    "priority": "LOW",
+    "nextAction": "Reference only — no action needed.",
+    "techStack": [
+      "Markdown"
+    ],
+    "tags": [
+      "reference",
+      "templates"
+    ],
+    "statusSummary": "Infrastructure — Reusable AI Company Patterns",
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  },
+  {
+    "id": "my-master-agent-genesis",
+    "name": "My Master Agent (Genesis)",
+    "type": "stub",
+    "description": "Legacy stub — appears to be superseded by Project Genesis.",
+    "localPath": "/Users/gregoriovonhildebrand/Documents/Agents/My Master Agent - Genesis",
+    "status": "dead",
+    "priority": "LOW",
+    "nextAction": "Confirm abandoned. Delete or archive this folder.",
+    "techStack": [],
+    "tags": [
+      "abandoned",
+      "cleanup"
+    ],
+    "syncedAt": "2026-04-13T20:47:31.009Z"
+  }
+]
