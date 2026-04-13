@@ -16,9 +16,9 @@ const NavIcon = ({
     style={
       active
         ? {
-            background: '#0A84FF',
+            background: 'var(--blue)',
             color: '#FFFFFF',
-            boxShadow: '0 4px 14px rgba(10, 132, 255, 0.35)',
+            boxShadow: '0 4px 14px color-mix(in srgb, var(--blue) 35%, transparent)',
           }
         : {
             background: 'transparent',
@@ -27,7 +27,7 @@ const NavIcon = ({
     }
     onMouseEnter={e => {
       if (!active) {
-        (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.08)'
+        (e.currentTarget as HTMLButtonElement).style.background = 'var(--surface-3)'
         ;(e.currentTarget as HTMLButtonElement).style.color = 'var(--text-secondary)'
       }
     }}
@@ -47,18 +47,18 @@ export function Sidebar({ criticalCount }: { criticalCount: number }) {
     <aside
       className="fixed left-0 top-0 h-full w-[72px] flex flex-col items-center py-5 gap-3 z-40"
       style={{
-        background: 'rgba(28, 28, 30, 0.95)',
+        background: 'var(--sidebar-bg)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderRight: '1px solid rgba(255, 255, 255, 0.06)',
+        borderRight: '1px solid var(--border)',
       }}
     >
       {/* Logo mark */}
       <div
         className="w-11 h-11 rounded-xl flex items-center justify-center mb-2"
         style={{
-          background: '#0A84FF',
-          boxShadow: '0 4px 16px rgba(10, 132, 255, 0.40)',
+          background: 'var(--blue)',
+          boxShadow: '0 4px 16px color-mix(in srgb, var(--blue) 40%, transparent)',
         }}
       >
         <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
@@ -73,28 +73,25 @@ export function Sidebar({ criticalCount }: { criticalCount: number }) {
         </svg>
       </div>
 
-      <div
-        className="w-8 h-px my-1"
-        style={{ background: 'rgba(255,255,255,0.06)' }}
-      />
+      <div className="w-8 h-px my-1" style={{ background: 'var(--border)' }} />
 
       <NavIcon active label="Dashboard">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
-          <rect x="3" y="3" width="7" height="7" rx="1"/>
-          <rect x="14" y="3" width="7" height="7" rx="1"/>
-          <rect x="3" y="14" width="7" height="7" rx="1"/>
-          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"/>
         </svg>
       </NavIcon>
 
       <NavIcon label="Activity">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
         </svg>
       </NavIcon>
 
       <NavIcon label="Analytics">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
           <line x1="18" y1="20" x2="18" y2="10"/>
           <line x1="12" y1="20" x2="12" y2="4"/>
           <line x1="6" y1="20" x2="6" y2="14"/>
@@ -102,7 +99,7 @@ export function Sidebar({ criticalCount }: { criticalCount: number }) {
       </NavIcon>
 
       <NavIcon label="Settings">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
           <circle cx="12" cy="12" r="3"/>
           <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
         </svg>
@@ -110,25 +107,25 @@ export function Sidebar({ criticalCount }: { criticalCount: number }) {
 
       <div className="flex-1" />
 
-      {/* Critical alert badge */}
+      {/* Critical alert */}
       {criticalCount > 0 && (
         <div className="relative w-11 h-11 flex items-center justify-center">
           <div
             className="w-10 h-10 rounded-xl flex items-center justify-center"
             style={{
-              background: 'rgba(255, 69, 58, 0.12)',
-              border: '1px solid rgba(255, 69, 58, 0.22)',
+              background: 'color-mix(in srgb, var(--status-critical) 10%, var(--surface-1))',
+              border:     '1px solid color-mix(in srgb, var(--status-critical) 22%, transparent)',
             }}
           >
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FF453A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5" style={{ stroke: 'var(--status-critical)' }} aria-hidden="true">
               <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
               <line x1="12" y1="9" x2="12" y2="13"/>
               <line x1="12" y1="17" x2="12.01" y2="17"/>
             </svg>
           </div>
           <span
-            className="absolute -top-1 -right-1 w-[18px] h-[18px] rounded-full text-[10px] font-bold flex items-center justify-center"
-            style={{ background: '#FF453A', color: '#FFFFFF' }}
+            className="absolute -top-1 -right-1 w-[18px] h-[18px] rounded-full text-[10px] font-semibold flex items-center justify-center"
+            style={{ background: 'var(--status-critical)', color: '#FFFFFF' }}
           >
             {criticalCount}
           </span>

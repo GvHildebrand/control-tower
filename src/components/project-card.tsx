@@ -11,19 +11,22 @@ function ExternalLink({ href, label, icon }: { href: string; label: string; icon
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-colors duration-150 cursor-pointer"
+      className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150 cursor-pointer"
       style={{
-        background: 'rgba(255,255,255,0.06)',
-        border: '1px solid rgba(255,255,255,0.10)',
-        color: '#98989F',
+        background: 'var(--surface-2)',
+        border: '1px solid var(--border)',
+        color: 'var(--text-tertiary)',
+        fontFamily: 'var(--font-body)',
       }}
       onMouseEnter={e => {
-        (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.10)'
-        ;(e.currentTarget as HTMLAnchorElement).style.color = '#FFFFFF'
+        const el = e.currentTarget as HTMLAnchorElement
+        el.style.background = 'var(--surface-3)'
+        el.style.color = 'var(--text-primary)'
       }}
       onMouseLeave={e => {
-        (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.06)'
-        ;(e.currentTarget as HTMLAnchorElement).style.color = '#98989F'
+        const el = e.currentTarget as HTMLAnchorElement
+        el.style.background = 'var(--surface-2)'
+        el.style.color = 'var(--text-tertiary)'
       }}
       aria-label={label}
     >
@@ -45,64 +48,68 @@ const VercelIcon = () => (
   </svg>
 )
 
+/* CSS variable references — adapts automatically to light/dark */
 const STATUS_ACCENT: Record<string, string> = {
-  new:      '#BF5AF2',
-  critical: '#FF453A',
-  blocked:  '#FF9F0A',
-  active:   '#30D158',
-  paused:   '#48484A',
-  complete: '#0A84FF',
-  dead:     '#2C2C2E',
+  new:      'var(--status-new)',
+  critical: 'var(--status-critical)',
+  blocked:  'var(--status-blocked)',
+  active:   'var(--status-active)',
+  paused:   'var(--status-paused)',
+  complete: 'var(--status-complete)',
+  dead:     'var(--status-dead)',
 }
 
 export function ProjectCard({ project: p }: { project: Project }) {
-  const accentColor = STATUS_ACCENT[p.status] ?? '#48484A'
-  const isCritical = p.status === 'critical'
-  const isNew = p.status === 'new'
+  const accentColor = STATUS_ACCENT[p.status] ?? 'var(--status-paused)'
+  const isCritical  = p.status === 'critical'
+  const isNew       = p.status === 'new'
+  const isBlocked   = p.status === 'blocked'
+
+  const cardBg = isCritical
+    ? 'color-mix(in srgb, var(--status-critical) 5%, var(--surface-1))'
+    : isNew
+    ? 'color-mix(in srgb, var(--status-new) 4%, var(--surface-1))'
+    : isBlocked
+    ? 'color-mix(in srgb, var(--status-blocked) 4%, var(--surface-1))'
+    : 'var(--surface-1)'
+
+  const cardBorderColor = isCritical
+    ? 'color-mix(in srgb, var(--status-critical) 22%, transparent)'
+    : isNew
+    ? 'color-mix(in srgb, var(--status-new) 18%, transparent)'
+    : isBlocked
+    ? 'color-mix(in srgb, var(--status-blocked) 18%, transparent)'
+    : 'var(--border)'
 
   return (
     <article
       className="group relative flex flex-col overflow-hidden cursor-default"
       style={{
-        background: isCritical
-          ? 'rgba(255, 69, 58, 0.06)'
-          : isNew
-          ? 'rgba(191, 90, 242, 0.05)'
-          : 'var(--surface-1)',
-        border: isCritical
-          ? '1px solid rgba(255, 69, 58, 0.20)'
-          : isNew
-          ? '1px solid rgba(191, 90, 242, 0.18)'
-          : '1px solid var(--border)',
+        background: cardBg,
+        border: `1px solid ${cardBorderColor}`,
         borderRadius: 14,
         borderLeft: `3px solid ${accentColor}`,
-        transition: 'transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease',
+        boxShadow: 'var(--card-shadow)',
+        transition: 'transform 200ms ease, box-shadow 200ms ease',
+        fontFamily: 'var(--font-body)',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget as HTMLElement
         el.style.transform = 'translateY(-2px)'
-        el.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.40)'
-        if (!isCritical && !isNew) {
-          el.style.borderColor = 'rgba(255, 255, 255, 0.14)'
-        }
+        el.style.boxShadow = 'var(--card-shadow-hover)'
       }}
       onMouseLeave={e => {
         const el = e.currentTarget as HTMLElement
         el.style.transform = ''
-        el.style.boxShadow = ''
-        el.style.borderColor = isCritical
-          ? 'rgba(255, 69, 58, 0.20)'
-          : isNew
-          ? 'rgba(191, 90, 242, 0.18)'
-          : 'var(--border)'
+        el.style.boxShadow = 'var(--card-shadow)'
       }}
     >
-      {/* ── Card header ── */}
+      {/* ── Header ── */}
       <div className="px-4 pt-4 pb-3">
         <div className="flex items-start justify-between gap-2 mb-1.5">
           <h3
-            className="text-[15px] font-bold leading-tight font-display tracking-tight"
-            style={{ color: 'var(--text-primary)' }}
+            className="text-[15px] font-semibold leading-tight tracking-[-0.01em]"
+            style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}
           >
             {p.name}
           </h3>
@@ -120,21 +127,18 @@ export function ProjectCard({ project: p }: { project: Project }) {
       </div>
 
       {/* ── Hairline ── */}
-      <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', margin: '0 16px' }} />
+      <div style={{ height: 1, background: 'var(--border)', margin: '0 16px' }} />
 
       {/* ── NEXT ACTION — primary reading target ── */}
-      <div
-        className="px-4 py-3"
-        style={{ background: 'rgba(255, 159, 10, 0.06)' }}
-      >
+      <div className="px-4 py-3.5" style={{ background: 'var(--next-action-bg)' }}>
         <p
-          className="text-[10px] font-bold tracking-[0.18em] uppercase mb-1.5 font-mono"
-          style={{ color: 'rgba(255, 159, 10, 0.55)' }}
+          className="text-[9px] font-semibold tracking-[0.18em] uppercase mb-1.5"
+          style={{ color: 'var(--next-action-label)', fontFamily: 'var(--font-mono)' }}
         >
           Next Action
         </p>
         <p
-          className="text-[13px] font-semibold leading-snug"
+          className="text-[13px] font-medium leading-snug"
           style={{ color: 'var(--next-action)' }}
         >
           {p.nextAction}
@@ -145,7 +149,7 @@ export function ProjectCard({ project: p }: { project: Project }) {
               <p
                 key={i}
                 className="text-[11px] flex items-start gap-1.5"
-                style={{ color: '#FF453A' }}
+                style={{ color: 'var(--status-critical)' }}
               >
                 <span className="mt-0.5 shrink-0" aria-hidden="true">▸</span>
                 {b}
@@ -156,7 +160,7 @@ export function ProjectCard({ project: p }: { project: Project }) {
       </div>
 
       {/* ── Hairline ── */}
-      <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', margin: '0 16px' }} />
+      <div style={{ height: 1, background: 'var(--border)', margin: '0 16px' }} />
 
       {/* ── Footer ── */}
       <div className="px-4 py-3 flex flex-col gap-2.5">
@@ -164,7 +168,7 @@ export function ProjectCard({ project: p }: { project: Project }) {
           <TechStackTags stack={p.techStack} max={4} />
           <div className="flex items-center gap-1.5">
             {p.githubUrl && <ExternalLink href={p.githubUrl} label="GitHub" icon={<GithubIcon />} />}
-            {p.vercelUrl && <ExternalLink href={p.vercelUrl} label="Live" icon={<VercelIcon />} />}
+            {p.vercelUrl && <ExternalLink href={p.vercelUrl} label="Live"   icon={<VercelIcon />} />}
           </div>
         </div>
         <ActivityDot
@@ -176,7 +180,7 @@ export function ProjectCard({ project: p }: { project: Project }) {
 
       {/* ── Progress bar ── */}
       {p.progressPercent !== undefined && (
-        <div style={{ height: 2, background: 'rgba(255,255,255,0.06)' }}>
+        <div style={{ height: 2, background: 'var(--border)' }}>
           <div
             style={{
               height: '100%',

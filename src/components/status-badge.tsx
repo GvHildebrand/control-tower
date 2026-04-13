@@ -1,25 +1,38 @@
 import type { ProjectStatus, ProjectPriority } from '@/lib/types'
 
-const STATUS_CONFIG: Record<ProjectStatus, { label: string; color: string; textColor: string }> = {
-  new:      { label: 'New',      color: '#BF5AF2', textColor: '#BF5AF2' },
-  critical: { label: 'Critical', color: '#FF453A', textColor: '#FF453A' },
-  blocked:  { label: 'Blocked',  color: '#FF9F0A', textColor: '#FF9F0A' },
-  active:   { label: 'Active',   color: '#30D158', textColor: '#30D158' },
-  paused:   { label: 'Paused',   color: '#636366', textColor: '#98989F' },
-  complete: { label: 'Complete', color: '#0A84FF', textColor: '#0A84FF' },
-  dead:     { label: 'Dead',     color: '#3A3A3C', textColor: '#636366' },
+/* Uses CSS vars — automatically adapts light/dark */
+const STATUS_VARS: Record<ProjectStatus, string> = {
+  new:      'var(--status-new)',
+  critical: 'var(--status-critical)',
+  blocked:  'var(--status-blocked)',
+  active:   'var(--status-active)',
+  paused:   'var(--status-paused)',
+  complete: 'var(--status-complete)',
+  dead:     'var(--status-dead)',
+}
+
+const STATUS_LABELS: Record<ProjectStatus, string> = {
+  new:      'New',
+  critical: 'Critical',
+  blocked:  'Blocked',
+  active:   'Active',
+  paused:   'Paused',
+  complete: 'Complete',
+  dead:     'Dead',
 }
 
 export function StatusBadge({ status }: { status: ProjectStatus }) {
-  const cfg = STATUS_CONFIG[status] ?? STATUS_CONFIG.paused
+  const colorVar  = STATUS_VARS[status] ?? 'var(--status-paused)'
+  const label     = STATUS_LABELS[status] ?? status
   const isPulsing = status === 'critical' || status === 'new' || status === 'blocked'
+
   return (
     <span
-      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold"
+      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium"
       style={{
-        background: `${cfg.color}18`,
-        border: `1px solid ${cfg.color}30`,
-        color: cfg.textColor,
+        background: `color-mix(in srgb, ${colorVar} 12%, transparent)`,
+        border:     `1px solid color-mix(in srgb, ${colorVar} 25%, transparent)`,
+        color:      colorVar,
       }}
     >
       <span
@@ -29,15 +42,15 @@ export function StatusBadge({ status }: { status: ProjectStatus }) {
         {isPulsing && (
           <span
             className="absolute inline-flex rounded-full animate-ping"
-            style={{ inset: 0, background: cfg.color, opacity: 0.5 }}
+            style={{ inset: 0, background: colorVar, opacity: 0.5 }}
           />
         )}
         <span
           className="relative rounded-full"
-          style={{ width: 6, height: 6, background: cfg.color }}
+          style={{ width: 6, height: 6, background: colorVar }}
         />
       </span>
-      {cfg.label}
+      {label}
     </span>
   )
 }
@@ -45,13 +58,14 @@ export function StatusBadge({ status }: { status: ProjectStatus }) {
 export function PriorityBadge({ priority }: { priority: ProjectPriority }) {
   if (priority === 'LOW' || priority === 'MEDIUM') return null
   const isCritical = priority === 'CRITICAL'
+  const colorVar   = isCritical ? 'var(--status-critical)' : 'var(--status-blocked)'
   return (
     <span
-      className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide"
+      className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold tracking-wide"
       style={{
-        background: isCritical ? 'rgba(255, 69, 58, 0.15)' : 'rgba(255, 159, 10, 0.15)',
-        border: isCritical ? '1px solid rgba(255, 69, 58, 0.30)' : '1px solid rgba(255, 159, 10, 0.30)',
-        color: isCritical ? '#FF453A' : '#FF9F0A',
+        background: `color-mix(in srgb, ${colorVar} 12%, transparent)`,
+        border:     `1px solid color-mix(in srgb, ${colorVar} 25%, transparent)`,
+        color:      colorVar,
       }}
     >
       {priority}

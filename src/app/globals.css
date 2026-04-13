@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -8,48 +7,199 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Space Grotesk', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', 'Fira Code', ui-monospace, monospace;
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
   --color-border: var(--border);
   --color-ring: var(--ring);
-  --color-card: var(--card);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--surface-1);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--text-tertiary);
   --radius-lg: var(--radius);
 }
 
+/* ─────────────────────────────────────────────────────────
+   APPLE HUMAN INTERFACE GUIDELINES — ADAPTIVE COLOR SYSTEM
+   ───────────────────────────────────────────────────────── */
+
+/* ── Light mode (default) ──────────────────────────────── */
 :root {
-  /* ─── Apple HIG Dark Mode ───────────────────────── */
+  color-scheme: light;
 
-  /* Backgrounds — OLED black system */
-  --bg:         #000000;  /* pure OLED black */
-  --surface-1:  #1C1C1E;  /* iOS system gray 6 — primary card */
-  --surface-2:  #2C2C2E;  /* iOS system gray 5 — elevated section */
-  --surface-3:  #3A3A3C;  /* iOS system gray 4 — hover / input */
+  /* Apple SF Pro system font stack — renders natively on macOS/iOS */
+  --font-body:    -apple-system, BlinkMacSystemFont, 'SF Pro Text',    'Helvetica Neue', Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'SF Mono', 'Menlo', 'Monaco', ui-monospace, 'Courier New', monospace;
 
-  /* Borders */
-  --border:       rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.16);
+  /* Grouped backgrounds — iOS systemGroupedBackground hierarchy */
+  --bg:        #F2F2F7;   /* systemGroupedBackground */
+  --surface-1: #FFFFFF;   /* secondarySystemGroupedBackground — card */
+  --surface-2: #F2F2F7;   /* same as bg — inner sections */
+  --surface-3: #E5E5EA;   /* tertiarySystemFill — hover */
 
-  /* Text — Apple HIG hierarchy */
-  --text-primary:   #FFFFFF;       /* Label — primary */
-  --text-secondary: #EBEBF5;       /* Label — secondary (60% white) */
-  --text-tertiary:  #98989F;       /* Label — tertiary (40%) */
-  --text-muted:     #636366;       /* Label — quaternary (18%) */
+  /* Separators */
+  --border:       rgba(60, 60, 67, 0.12);
+  --border-hover: rgba(60, 60, 67, 0.22);
+  --separator:    rgba(60, 60, 67, 0.29);
 
-  /* System colors — Apple exact values */
-  --blue:     #0A84FF;
-  --green:    #30D158;
-  --red:      #FF453A;
-  --orange:   #FF9F0A;
-  --yellow:   #FFD60A;
-  --purple:   #BF5AF2;
-  --cyan:     #32ADE6;
-  --pink:     #FF375F;
-  --teal:     #40C8E0;
-  --indigo:   #5E5CE6;
+  /* Text — Apple label hierarchy */
+  --text-primary:   #000000;                   /* label */
+  --text-secondary: rgba(60, 60, 67, 0.78);    /* secondaryLabel */
+  --text-tertiary:  rgba(60, 60, 67, 0.50);    /* tertiaryLabel */
+  --text-muted:     rgba(60, 60, 67, 0.26);    /* quaternaryLabel */
+
+  /* System colors — iOS light */
+  --blue:    #007AFF;
+  --green:   #34C759;
+  --red:     #FF3B30;
+  --orange:  #FF9500;
+  --yellow:  #FFCC00;
+  --purple:  #AF52DE;
+  --cyan:    #32ADE6;
+  --pink:    #FF2D55;
+  --teal:    #30B0C7;
+  --indigo:  #5856D6;
 
   /* Status accents */
+  --status-new:      #AF52DE;
+  --status-critical: #FF3B30;
+  --status-blocked:  #FF9500;
+  --status-active:   #34C759;
+  --status-paused:   #8E8E93;
+  --status-complete: #007AFF;
+  --status-dead:     #C7C7CC;
+
+  /* NEXT ACTION — most important field */
+  --next-action:        #C65200;               /* darkened orange — 4.5:1 on white */
+  --next-action-bg:     rgba(255, 149, 0, 0.08);
+  --next-action-label:  rgba(198, 82, 0, 0.48);
+
+  /* Card elevation */
+  --card-shadow:       0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
+  --card-shadow-hover: 0 6px 20px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.06);
+
+  /* Chrome surfaces */
+  --sidebar-bg: rgba(242, 242, 247, 0.92);
+  --header-bg:  rgba(242, 242, 247, 0.85);
+
+  /* Sidebar */
+  --sidebar-width: 72px;
+
+  /* Shadcn compat */
+  --background:         #F2F2F7;
+  --foreground:         #000000;
+  --card:               #FFFFFF;
+  --card-foreground:    #000000;
+  --popover:            #FFFFFF;
+  --popover-foreground: #000000;
+  --primary:            #007AFF;
+  --primary-foreground: #FFFFFF;
+  --secondary:          #E5E5EA;
+  --secondary-foreground: rgba(60,60,67,0.78);
+  --muted:              #F2F2F7;
+  --muted-foreground:   rgba(60,60,67,0.50);
+  --accent:             #E5E5EA;
+  --accent-foreground:  #007AFF;
+  --destructive:        #FF3B30;
+  --border:             rgba(60, 60, 67, 0.12);
+  --input:              #E5E5EA;
+  --ring:               rgba(0, 122, 255, 0.40);
+  --radius:             0.875rem;
+}
+
+/* ── Dark mode ─────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --bg:        #000000;   /* OLED black */
+    --surface-1: #1C1C1E;   /* iOS system gray 6 */
+    --surface-2: #2C2C2E;   /* iOS system gray 5 */
+    --surface-3: #3A3A3C;   /* iOS system gray 4 */
+
+    --border:       rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.16);
+    --separator:    rgba(84, 84, 88, 0.65);
+
+    --text-primary:   #FFFFFF;
+    --text-secondary: rgba(235, 235, 245, 0.78);
+    --text-tertiary:  rgba(235, 235, 245, 0.50);
+    --text-muted:     rgba(235, 235, 245, 0.22);
+
+    --blue:    #0A84FF;
+    --green:   #30D158;
+    --red:     #FF453A;
+    --orange:  #FF9F0A;
+    --yellow:  #FFD60A;
+    --purple:  #BF5AF2;
+    --cyan:    #32ADE6;
+    --pink:    #FF375F;
+    --teal:    #40C8E0;
+    --indigo:  #5E5CE6;
+
+    --status-new:      #BF5AF2;
+    --status-critical: #FF453A;
+    --status-blocked:  #FF9F0A;
+    --status-active:   #30D158;
+    --status-paused:   #636366;
+    --status-complete: #0A84FF;
+    --status-dead:     #3A3A3C;
+
+    --next-action:       #FF9F0A;
+    --next-action-bg:    rgba(255, 159, 10, 0.06);
+    --next-action-label: rgba(255, 159, 10, 0.48);
+
+    --card-shadow:       none;
+    --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.50);
+
+    --sidebar-bg: rgba(28, 28, 30, 0.95);
+    --header-bg:  rgba(0, 0, 0, 0.85);
+
+    --background:         #000000;
+    --foreground:         #FFFFFF;
+    --card:               #1C1C1E;
+    --card-foreground:    #FFFFFF;
+    --popover:            #2C2C2E;
+    --popover-foreground: #FFFFFF;
+    --primary:            #0A84FF;
+    --primary-foreground: #FFFFFF;
+    --secondary:          #2C2C2E;
+    --secondary-foreground: rgba(235,235,245,0.78);
+    --muted:              #2C2C2E;
+    --muted-foreground:   rgba(235,235,245,0.50);
+    --accent:             #2C2C2E;
+    --accent-foreground:  #0A84FF;
+    --destructive:        #FF453A;
+    --border:             rgba(255, 255, 255, 0.08);
+    --input:              #2C2C2E;
+    --ring:               rgba(10, 132, 255, 0.50);
+  }
+}
+
+/* ── Manual .dark class override (for toggle) ─────────── */
+:root.dark {
+  color-scheme: dark;
+
+  --bg:        #000000;
+  --surface-1: #1C1C1E;
+  --surface-2: #2C2C2E;
+  --surface-3: #3A3A3C;
+
+  --border:       rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.16);
+  --separator:    rgba(84, 84, 88, 0.65);
+
+  --text-primary:   #FFFFFF;
+  --text-secondary: rgba(235, 235, 245, 0.78);
+  --text-tertiary:  rgba(235, 235, 245, 0.50);
+  --text-muted:     rgba(235, 235, 245, 0.22);
+
+  --blue:    #0A84FF;
+  --green:   #30D158;
+  --red:     #FF453A;
+  --orange:  #FF9F0A;
+  --yellow:  #FFD60A;
+  --purple:  #BF5AF2;
+
   --status-new:      #BF5AF2;
   --status-critical: #FF453A;
   --status-blocked:  #FF9F0A;
@@ -58,34 +208,74 @@
   --status-complete: #0A84FF;
   --status-dead:     #3A3A3C;
 
-  /* NEXT ACTION — the most important field */
-  --next-action: #FF9F0A;   /* Apple orange — maximum visibility on dark */
+  --next-action:       #FF9F0A;
+  --next-action-bg:    rgba(255, 159, 10, 0.06);
+  --next-action-label: rgba(255, 159, 10, 0.48);
 
-  /* Sidebar */
-  --sidebar-width: 72px;
+  --card-shadow:       none;
+  --card-shadow-hover: 0 8px 24px rgba(0,0,0,0.50);
 
-  /* Shadcn compat */
-  --background:          #000000;
-  --foreground:          #FFFFFF;
-  --card:                #1C1C1E;
-  --card-foreground:     #FFFFFF;
-  --popover:             #2C2C2E;
-  --popover-foreground:  #FFFFFF;
-  --primary:             #0A84FF;
-  --primary-foreground:  #FFFFFF;
-  --secondary:           #2C2C2E;
-  --secondary-foreground:#EBEBF5;
-  --muted:               #2C2C2E;
-  --muted-foreground:    #98989F;
-  --accent:              #2C2C2E;
-  --accent-foreground:   #0A84FF;
-  --destructive:         #FF453A;
-  --border:              rgba(255, 255, 255, 0.08);
-  --input:               #2C2C2E;
-  --ring:                rgba(10, 132, 255, 0.50);
-  --radius:              0.875rem;
+  --sidebar-bg: rgba(28, 28, 30, 0.95);
+  --header-bg:  rgba(0, 0, 0, 0.85);
+
+  --background:         #000000;
+  --foreground:         #FFFFFF;
+  --card:               #1C1C1E;
+  --card-foreground:    #FFFFFF;
 }
 
+/* ── Manual .light class override ────────────────────────*/
+:root.light {
+  color-scheme: light;
+
+  --bg:        #F2F2F7;
+  --surface-1: #FFFFFF;
+  --surface-2: #F2F2F7;
+  --surface-3: #E5E5EA;
+
+  --border:       rgba(60, 60, 67, 0.12);
+  --border-hover: rgba(60, 60, 67, 0.22);
+  --separator:    rgba(60, 60, 67, 0.29);
+
+  --text-primary:   #000000;
+  --text-secondary: rgba(60, 60, 67, 0.78);
+  --text-tertiary:  rgba(60, 60, 67, 0.50);
+  --text-muted:     rgba(60, 60, 67, 0.26);
+
+  --blue:    #007AFF;
+  --green:   #34C759;
+  --red:     #FF3B30;
+  --orange:  #FF9500;
+  --yellow:  #FFCC00;
+  --purple:  #AF52DE;
+
+  --status-new:      #AF52DE;
+  --status-critical: #FF3B30;
+  --status-blocked:  #FF9500;
+  --status-active:   #34C759;
+  --status-paused:   #8E8E93;
+  --status-complete: #007AFF;
+  --status-dead:     #C7C7CC;
+
+  --next-action:       #C65200;
+  --next-action-bg:    rgba(255, 149, 0, 0.08);
+  --next-action-label: rgba(198, 82, 0, 0.48);
+
+  --card-shadow:       0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
+  --card-shadow-hover: 0 6px 20px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.06);
+
+  --sidebar-bg: rgba(242, 242, 247, 0.92);
+  --header-bg:  rgba(242, 242, 247, 0.85);
+
+  --background:         #F2F2F7;
+  --foreground:         #000000;
+  --card:               #FFFFFF;
+  --card-foreground:    #000000;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BASE STYLES
+   ───────────────────────────────────────────────────────── */
 @layer base {
   * { box-sizing: border-box; }
 
@@ -93,65 +283,39 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100%;
-    color-scheme: dark;
   }
 
   body {
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-family: var(--font-body);
     color: var(--text-primary);
     background-color: var(--bg);
     min-height: 100%;
+    transition: background-color 200ms ease, color 200ms ease;
   }
 }
 
-/* ─── Typography utilities ────────────────────────── */
-.font-display { font-family: 'Syne', system-ui, sans-serif; }
-.font-mono    { font-family: 'Geist Mono', 'Fira Code', ui-monospace, monospace; }
+/* ─────────────────────────────────────────────────────────
+   TYPOGRAPHY
+   ───────────────────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-mono    { font-family: var(--font-mono); }
 
-/* ─── Card elevation system ───────────────────────── */
-/* Level 0 — page bg */
-/* Level 1 — primary card: bg #1C1C1E */
-/* Level 2 — inner section: bg #2C2C2E */
-/* Level 3 — hover / raised: bg #3A3A3C + shadow */
-
-.card-l1 {
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-}
-
-.card-l2 {
-  background: var(--surface-2);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-/* ─── Scrollbar ───────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────
+   SCROLLBAR
+   ───────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--separator);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: var(--border-hover);
 }
 
-/* ─── Pulsing ring animation (critical indicator) ─── */
-@keyframes pulse-ring {
-  0%   { transform: scale(1);   opacity: 0.7; }
-  70%  { transform: scale(2.2); opacity: 0; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-
-.pulse-ring::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: currentColor;
-  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
-}
-
-/* ─── Reduced motion ──────────────────────────────── */
+/* ─────────────────────────────────────────────────────────
+   REDUCED MOTION
+   ───────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
