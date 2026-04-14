@@ -1,77 +1,9 @@
 {
-  "headline": "You have 3 revenue-ready SaaS products but Project Genesis has been blocked on Stripe billing for 17 days — complete that payment flow immediately to unlock your first revenue stream.",
-  "opportunities": [
-    {
-      "title": "Ship Project Genesis with basic Stripe billing this week",
-      "type": "monetization",
-      "effort": "MEDIUM",
-      "impact": "CRITICAL",
-      "description": "Genesis is 40% complete with a live demo but zero revenue capability. The Stripe integration is the only blocker preventing launch. This is your fastest path to first dollar since the product already exists.",
-      "projects": [
-        "Project Genesis"
-      ]
-    },
-    {
-      "title": "Package autonomous agent framework as open-source + paid hosting",
-      "type": "open-source",
-      "effort": "LOW",
-      "impact": "HIGH",
-      "description": "Your refund agents (Kiwi, PORFÍO) and GTM agents share common Node.js + Claude patterns. Extract the framework, open-source it for community, and offer hosted execution as a paid service through Genesis or Vigilia.",
-      "projects": [
-        "Kiwi Refund Agent",
-        "PORFÍO — Refund Agent",
-        "Vigilia GTM Agents"
-      ]
-    },
-    {
-      "title": "Content series: 'Building in Public' your refund agent success",
-      "type": "content",
-      "effort": "LOW",
-      "impact": "MEDIUM",
-      "description": "You're actively recovering $900+ with autonomous agents that commit daily. Document the win/loss ratio, share code snippets, and build audience around practical AI automation. Perfect Twitter thread material.",
-      "projects": [
-        "Kiwi Refund Agent",
-        "PORFÍO — Refund Agent"
-      ]
-    },
-    {
-      "title": "Merge AI Workflow Studio into Genesis as premium tier",
-      "type": "product",
-      "effort": "MEDIUM",
-      "impact": "HIGH",
-      "description": "Both products are Next.js + TypeScript + Supabase workflow builders at 55% and 40% completion. Consolidate into Genesis Basic (current) and Genesis Pro (with D3/Three.js visual builder). Reduces maintenance overhead while creating upsell path.",
-      "projects": [
-        "Project Genesis",
-        "AI Workflow Studio"
-      ]
-    },
-    {
-      "title": "Kill BioMirror, archive Escape Babylon",
-      "type": "kill-or-commit",
-      "effort": "LOW",
-      "impact": "MEDIUM",
-      "description": "BioMirror has 1 commit in 3 days and undefined MVP. Escape Babylon is paused with 0 commits. Your focus is scattered across 8 active projects — ruthlessly cut the bottom 20% to accelerate revenue projects.",
-      "projects": [
-        "BioMirror",
-        "Escape Babylon Agent"
-      ]
-    },
-    {
-      "title": "Open-source Vigilia to drive SaaS adoption",
-      "type": "open-source",
-      "effort": "LOW",
-      "impact": "HIGH",
-      "description": "Vigilia is already AGPL licensed and 65% complete with active commits. GitHub-first strategy builds developer community around AI governance, positions you as thought leader, and creates inbound for consulting/enterprise deals.",
-      "projects": [
-        "Vigilia"
-      ]
-    }
-  ],
+  "generatedAt": "2026-04-14T05:23:52.280Z",
+  "headline": "Set ANTHROPIC_API_KEY to generate strategic insights",
+  "opportunities": [],
   "quickWins": [
-    "Tweet thread about your refund agents' daily commit streak and recovery progress",
-    "Create GitHub repos for Vigilia and your agent framework to start building community",
-    "Export your 14-doc Engineering Foundations as a public Substack series for developer audience"
+    "Run: ANTHROPIC_API_KEY=sk-... npm run sync"
   ],
-  "weeklyDigest": "Your portfolio shows strong technical execution (daily commits on revenue recovery agents) but revenue paralysis — Genesis has been blocked on Stripe for 17 days while you maintain 8 active projects. This week: Complete Genesis billing, archive BioMirror/Escape Babylon, and choose between consolidating or shipping AI Workflow Studio separately. Your agent automation work is genuinely impressive and marketable — the refund recovery alone is worth content/community building. Focus: ship one revenue stream this week rather than advancing all projects incrementally.",
-  "generatedAt": "2026-04-13T22:46:07.410Z"
+  "weeklyDigest": "Intelligence report requires an Anthropic API key. Set ANTHROPIC_API_KEY in your environment and re-run sync."
 }
