@@ -5,6 +5,7 @@ import { ProjectGrid } from '@/components/project-grid'
 import { Sidebar } from '@/components/sidebar'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { DailyGreeting } from '@/components/daily-greeting'
+import { ReloadButton } from '@/components/reload-button'
 import greetingData from '@/data/daily-greeting.json'
 
 const syncedAt = snapshot[0]?.syncedAt ?? new Date().toISOString()
@@ -45,6 +46,7 @@ export default function Page() {
               >
                 Strategic Project Command
               </p>
+              <ReloadButton syncedAt={syncedAt} />
             </div>
 
             {/* Controls */}
@@ -65,22 +67,6 @@ export default function Page() {
                 <span className="hidden sm:block">Search projects</span>
               </div>
               <ThemeToggle />
-              <button
-                title="Refresh: npm run sync:push"
-                className="w-9 h-9 rounded-xl flex items-center justify-center transition-colors duration-150 cursor-pointer"
-                style={{
-                  background: 'var(--surface-2)',
-                  border:     '1px solid var(--border)',
-                  color:      'var(--text-tertiary)',
-                }}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                  <path d="M3 3v5h5"/>
-                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
-                  <path d="M16 21h5v-5"/>
-                </svg>
-              </button>
             </div>
           </div>
 
